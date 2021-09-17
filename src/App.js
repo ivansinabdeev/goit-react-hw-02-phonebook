@@ -1,11 +1,21 @@
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Работает?</p>
-    </div>
-  );
+import Form from './components/Form/Form';
+
+class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Form />
+      </div>
+    );
+  }
 }
 
 export default App;
