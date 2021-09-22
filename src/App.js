@@ -11,6 +11,10 @@ class App extends Component {
     name: '',
   };
 
+  handleRemove = () => {
+    console.log('удаляйся!!');
+  };
+
   render() {
     const { contacts } = this.state;
     return (
@@ -24,9 +28,16 @@ class App extends Component {
           }}
         />
         {contacts.length ? <Title title="Contacts" /> : null}
-        {contacts.map(contact => {
-          return <p key={uuidv4()}>{contact}</p>;
-        })}
+        <ul>
+          {contacts.map(contact => {
+            return (
+              <li key={uuidv4()}>
+                {contact}
+                <button onClick={this.handleRemove}>Delete</button>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

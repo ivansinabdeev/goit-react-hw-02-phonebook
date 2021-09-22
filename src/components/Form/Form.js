@@ -10,17 +10,20 @@ class Form extends Component {
       value: '',
     };
   }
+
+  formSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.value);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ value: '' });
+  };
+
   render() {
-    const { value } = this.state;
-    const { onSubmit } = this.props;
     return (
-      <form
-        className={s.addContact}
-        onSubmit={e => {
-          e.preventDefault();
-          onSubmit(value);
-        }}
-      >
+      <form className={s.addContact} onSubmit={this.formSubmit}>
         <Title title="Phonebook" />
         <label>
           Name
@@ -39,7 +42,7 @@ class Form extends Component {
         </label>
         <button
           onClick={() => {
-            console.log('Работает?');
+            console.log('Клац!');
           }}
           type="submit"
           className={s.button}
