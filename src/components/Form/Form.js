@@ -31,7 +31,6 @@ class Form extends Component {
             type="text"
             value={this.state.value}
             onChange={e => {
-              console.log('value', e.currentTarget.value);
               this.setState({ value: e.currentTarget.value });
             }}
             name="name"
@@ -40,13 +39,7 @@ class Form extends Component {
             required
           />
         </label>
-        <button
-          onClick={() => {
-            console.log('Клац!');
-          }}
-          type="submit"
-          className={s.button}
-        >
+        <button onClick={() => {}} type="submit" className={s.button}>
           Add contact
         </button>
       </form>
