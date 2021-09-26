@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import s from './ContactCard.module.css';
+import s from './ContactList.module.css';
 
 class ContactList extends Component {
   handleClick = () => {
@@ -9,10 +9,10 @@ class ContactList extends Component {
   };
 
   render() {
-    const { id, name } = this.props;
+    const { id, name, number } = this.props;
     return (
       <li key={id}>
-        {name}
+        {name}:{number}
         <button className={s.buttonDelete} onClick={this.handleClick}>
           Delete
         </button>

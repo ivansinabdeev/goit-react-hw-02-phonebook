@@ -7,18 +7,25 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      name: '',
+      number: '',
     };
   }
 
   formSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit(this.state.name);
+    this.props.onSubmit(this.state.number);
     this.reset();
   };
 
   reset = () => {
-    this.setState({ value: '' });
+    this.setState({ name: '', number: '' });
+  };
+
+  handleChange = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -29,13 +36,23 @@ class Form extends Component {
           Name
           <input
             type="text"
-            value={this.state.value}
-            onChange={e => {
-              this.setState({ value: e.currentTarget.value });
-            }}
+            value={this.state.name}
+            onChange={this.handleChange}
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title=""
+            title="Имя может состоять только из букв, апострофа, тире и пробелов."
+            required
+          />
+        </label>
+        <label>
+          Number
+          <input
+            type="tel"
+            value={this.state.number}
+            onChange={this.handleChange}
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
           />
         </label>
