@@ -14,8 +14,7 @@ class Form extends Component {
 
   formSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.name);
-    this.props.onSubmit(this.state.number);
+    this.props.onSubmit({ name: this.state.name, number: this.state.number });
     this.reset();
   };
 
