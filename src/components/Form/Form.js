@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import Title from '../Title/Title';
 import s from './Form.module.css';
@@ -14,7 +15,12 @@ class Form extends Component {
 
   formSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit({ name: this.state.name, number: this.state.number });
+    const contact = {
+      id: uuidv4(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+    this.props.onSubmit(contact);
     this.reset();
   };
 
